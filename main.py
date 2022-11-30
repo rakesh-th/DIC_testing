@@ -32,9 +32,9 @@ from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor = regressor.fit(X_train, Y_train)
 
-
+#np.expand_dims([int(input_species), input_Length1, input_Length2, input_Length3, input_Height, input_Width], 0)
 if st.button('Make Prediction'):
-    inputs = [input_hours]
+    inputs = np.expand_dims([input_hours],0)
     prediction = regressor.predict(inputs)
     st.write(f"SCore: {prediction:.2f}")
 
