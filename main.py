@@ -35,7 +35,7 @@ regressor = regressor.fit(X_train, Y_train)
 
 if st.button('Make Prediction'):
     inputs = [input_hours]
-    prediction = regressor.predict(X_test)(inputs)
+    prediction = regressor.predict(inputs)
     st.write(f"SCore: {prediction:.2f}")
 
     st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
