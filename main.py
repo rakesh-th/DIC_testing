@@ -21,7 +21,7 @@ if st.checkbox('Show Training Dataframe'):
     my_data
  
 
-input_hours = st.slider('Number of Hours:', 0, max(my_data["Hours"]), 2.5)
+input_hours = st.slider('Number of Hours:', 0.0, max(my_data["Hours"]), 2.5)
 
 X = my_data.iloc[ : ,   : 1 ].values
 Y = my_data.iloc[ : , 1 ].values
