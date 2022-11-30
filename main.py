@@ -11,7 +11,7 @@ from xgboost import XGBClassifier
 
 st.header("Credit Card Approval Prediction")
 st.text_input("Enter your Name: ", key="name")
-my_data = pd.read_csv("studenrscores.csv")
+my_data = pd.read_csv("studentscores.csv")
 
 # load model
 #best_xgboost_model = XGBClassifier()
