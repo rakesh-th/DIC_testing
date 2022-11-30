@@ -36,6 +36,6 @@ regressor = regressor.fit(X_train, Y_train)
 if st.button('Make Prediction'):
     inputs = np.expand_dims([input_hours],0)
     prediction = regressor.predict(inputs)
-    st.write(f"SCore: {prediction:.2f}")
+    st.write(f"SCore: {prediction}")
 
     st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
