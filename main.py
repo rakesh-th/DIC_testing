@@ -71,9 +71,8 @@ input_AGE = st.slider('Age of the applicant in Years:', 0.0, max(my_data["AGE"])
 input_EXPERIENCE = st.slider('Experience of the applicant in Years:', 0.0, max(my_data["EXPERIENCE"]), 7.5)
 input_ACCOUNT_DURATION = st.slider('Account Duration with the bank in Months:', 0, max(my_data["ACCOUNT_DURATION"]), 18)
 
-best_xgboost_model
-
-if st.button('Train The Model'):
+def train():
+    global best_xgboost_model
     X = my_data.drop(['ID', 'Risk', 'Occupation_Type'], axis=1)
     y = my_data['Risk']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
@@ -85,9 +84,11 @@ if st.button('Train The Model'):
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-    model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
-    model.fit(X_train, y_train)
-    best_xgboost_model=model
+    best_xgboost_model = XGBClassifier(max_depth=5,n_estimators=250, min_child_weight=8)
+    best_xgboost_model.fit(X_train, y_train)
+
+if st.button('Train The Model'):
+    train()
 
 if st.button('Make Prediction'):
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
