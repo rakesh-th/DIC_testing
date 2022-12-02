@@ -25,43 +25,43 @@ st.subheader("Please provide details of your application!")
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Gender = st.radio(
-        'Gender of the applicant:',
+        'Gender of the applicant(0-Female, 1-Male):',
         np.unique(my_data['Gender']))
  
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Car = st.radio(
-        'Does the applicant own a car:',
+        'Does the applicant own a car(0-No, 1-Yes):',
         np.unique(my_data['Car']))
 
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Realty = st.radio(
-        'Does the applicant own any Realty(properties):',
+        'Own Properties(0-No, 1-Yes):',
         np.unique(my_data['Realty']))
 
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Family_Status = st.radio(
-        'Is applicant Single/Married:',
+        "Is applicant Married(0)/Single(1):",
         np.unique(my_data['Family_Status']))
 
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Income_Type = st.radio(
-        "What is the applicant's source of Income:",
+        "Profession(0-Pensioner, 1-Student, 2-Working):",
         np.unique(my_data['Income_Type']))   
 
 left_column, right_column = st.columns(2)
 with left_column:
     inp_House_Type = st.radio(
-        "What is the applicant'type of House",
+        "House Type(0-Own, 1-Rent Free, 2-Rented, 3-With parents)",
         np.unique(my_data['House_Type']))
 
 left_column, right_column = st.columns(2)
 with left_column:
     inp_Education = st.radio(
-        'Education of the Applicant',
+        'Applicant Education(0-Degree, 1-Higher, 2-Secondary)',
         np.unique(my_data['Education']))  
 
 input_Children = st.slider('Number of Children:', 0, max(my_data["Children"]), 3)
@@ -91,8 +91,8 @@ if st.button('Make Prediction'):
     inputs = np.expand_dims([inp_Gender, inp_Car, inp_Realty, input_Children, input_Salary, inp_Income_Type, inp_Education, inp_Family_Status, inp_House_Type, input_AGE, input_EXPERIENCE, input_Family_Size, input_ACCOUNT_DURATION],0)
     prediction = best_xgboost_model.predict(inputs)
     if prediction:
-        st.write("Your Credit Card is Declined")
+        st.error("Sorry, Your Credit Card is Declined")
     else:
-        st.write("Your Credit Card is Approved")
+        st.success("Congratulations, Your Credit Card is Approved")
 
     st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
