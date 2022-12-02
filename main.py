@@ -89,4 +89,4 @@ if st.button('Make Prediction'):
     else:
         st.success("Congratulations, Your Credit Card is Approved")
 
-    st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
+    st.write(f"Thank you {st.session_state.name}! We hope you liked our project.")
